@@ -1,6 +1,6 @@
 {
   "name": "cpp-toolchain",
-  "image": "yutianchen/pyramid_infer:latest",
+  "image": "yutianchen/torch_cuda_extension:latest",
   "remoteUser": "ubuntu",          // user that exists inside the image
   "workspaceFolder": "/workspace",
   "mounts": [

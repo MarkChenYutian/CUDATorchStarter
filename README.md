@@ -22,3 +22,8 @@ Place them / symbolic link them to `CUDAExtension/lib/libtorch` and `CUDAExtensi
 ## 3. Adding Custom CPP Extension / CUDA Kernel
 
 See `./CUDAExtension/README.md`.
+
+
+## 4. Running Python Scripts
+
+1. After building the `CUDAExtension` package, run `python -m PythonSrc.<your_script_name>` and use `import CUDAExtension` in script to access the built extension.
