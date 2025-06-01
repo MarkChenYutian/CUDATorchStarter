@@ -1,5 +1,7 @@
 # CUDA-Torch Starter
 
+<img width="640" alt="Repository Structure" src="https://github.com/user-attachments/assets/5e6d7c86-a083-4d6f-8bd7-d90e9604a6bc" />
+
 This repository is a boilerplate for writing C++ / CUDA extension for PyTorch / libtorch.
 
 ## 1. Download the LibTorch and GoogleTest
