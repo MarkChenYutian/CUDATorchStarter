@@ -1,7 +1,6 @@
 import torch
 import sys
-sys.path.append('.')  # Add current directory to path
-import CUDAExtension as cuda_kernel_add
+import CUDAExtension
 
 def test_cuda_kernel():
     """Test the CUDA kernel binding"""
@@ -19,7 +18,7 @@ def test_cuda_kernel():
     
     # Test our custom CUDA kernel
     print("Testing add_cuda...")
-    result_cuda = cuda_kernel_add.add_cuda(a, b)
+    result_cuda = CUDAExtension.add_cuda(a, b)
     
     # Compare with PyTorch's native addition
     expected = a + b
@@ -41,7 +40,7 @@ def test_cpu_kernel():
     
     # Test our custom CPU kernel
     print("Testing add_cpu...")
-    result_cpu = cuda_kernel_add.add_cpu(a, b)
+    result_cpu = CUDAExtension.add_cpu(a, b)
     
     # Compare with PyTorch's native addition
     expected = a + b
@@ -60,7 +59,7 @@ def test_auto_dispatch():
     # Test CPU
     a_cpu = torch.randn(100, dtype=torch.float32)
     b_cpu = torch.randn(100, dtype=torch.float32)
-    result_cpu = cuda_kernel_add.add_fwd(a_cpu, b_cpu)
+    result_cpu = CUDAExtension.add_fwd(a_cpu, b_cpu)
     expected_cpu = a_cpu + b_cpu
     
     if torch.allclose(result_cpu, expected_cpu, rtol=1e-5, atol=1e-5):
@@ -73,7 +72,7 @@ def test_auto_dispatch():
         device = torch.device('cuda')
         a_cuda = torch.randn(100, device=device, dtype=torch.float32)
         b_cuda = torch.randn(100, device=device, dtype=torch.float32)
-        result_cuda = cuda_kernel_add.add_fwd(a_cuda, b_cuda)
+        result_cuda = CUDAExtension.add_fwd(a_cuda, b_cuda)
         expected_cuda = a_cuda + b_cuda
         
         if torch.allclose(result_cuda, expected_cuda, rtol=1e-5, atol=1e-5):
@@ -97,7 +96,7 @@ def benchmark_performance():
     
     # Warm up
     for _ in range(10):
-        _ = cuda_kernel_add.add_cuda(a, b)
+        _ = CUDAExtension.add_cuda(a, b)
         _ = a + b
     
     torch.cuda.synchronize()
@@ -106,7 +105,7 @@ def benchmark_performance():
     import time
     start = time.time()
     for _ in range(100):
-        result_custom = cuda_kernel_add.add_cuda(a, b)
+        result_custom = CUDAExtension.add_cuda(a, b)
     torch.cuda.synchronize()
     custom_time = time.time() - start
     
