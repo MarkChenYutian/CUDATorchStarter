@@ -4,10 +4,9 @@
 
 1. Declare the method(s) in `include/<your_kernel_name>.h`. A good practice will be declaring a CUDA kernel, a cpp wrapper for the CUDA kernel, a CPU fallback implementation using `libtorch`, and a *dispatch* function that switch between CUDA and CPU implementation based on input tensor device.
 
-    > [!NOTE]
-    > 
-    > Adding a libtorch CPU implementation allows us to test the correctness on C++ unit test. This is very helpful for debugging since we have `gdb`, `cuda-gdb`, and so much more for C++ debug comparing to Python debugging tools.
-    > 
+> [!NOTE]
+> Adding a libtorch CPU implementation allows us to test the correctness on C++ unit test. This is very helpful for debugging since we have `gdb`, `cuda-gdb`, and so much more for C++ debug comparing to Python debugging tools.
+> 
 
 2. Create `src/<your_kernel_name>.cu` and add into `CMakeLists.txt`. This allow auto-complete and VSCode IntelliSense to work properly.
 
