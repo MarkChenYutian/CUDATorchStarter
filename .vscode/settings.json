@@ -1,0 +1,4 @@
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/CUDAExtension",
+    "cmake.buildDirectory": "${workspaceFolder}/CUDAExtension/build",
+}

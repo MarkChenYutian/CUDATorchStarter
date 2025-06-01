@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/CUDAExtension/include",
+                "${workspaceFolder}/CUDAExtension/lib/libtorch/include",
+                "${workspaceFolder}/CUDAExtension/lib/libtorch/include/torch/csrc/api/include",
+                "/usr/local/cuda/include",
+                "/usr/include/python3.12"
+            ],
+            "defines": [
+                "_GLIBCXX_USE_CXX11_ABI=1"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,35 @@
+services:
+  dev:
+    image: yutianchen/torch_cuda_extension:latest
+    # Build from the Dockerfile in this directory
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    volumes:
+      - ../:/workspace
+      - /media/yutianch/Data/PyramidInfer/Model/Library/libtorch/:/media/yutianch/Data/PyramidInfer/Model/Library/libtorch/
+
+    working_dir: /workspace
+
+    # Expose this if you plan to run Jupyter or a notebook server
+    # ports:
+
+    # Ask Docker to give this container access to all GPUs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+    # Keep the container running in interactive mode
+    stdin_open: true
+    tty: true
+
+    # (Optional) If you need extra environment variables for CUDA or Python:
+    environment:
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - NVIDIA_VISIBLE_DEVICES=all
+      - PYTHONUNBUFFERED=1
