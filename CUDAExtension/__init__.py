@@ -2,6 +2,7 @@
 """
 CUDA Extension for PyTorch - Custom kernel operations
 """
+import torch    # This is required otherwise import will fail.
 
 # Import the compiled extension
 try:

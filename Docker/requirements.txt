@@ -3,6 +3,10 @@
 torch==2.7.0+cu128
 torchvision==0.22.0+cu128
 
+# For automatic type hint (stub) generation
+pybind11>=2.6.0
+pybind11-stubgen>=0.10.0  # For automatic stub generation
+
 numpy
 scipy
 matplotlib

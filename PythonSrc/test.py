@@ -1,5 +1,4 @@
 import torch
-import sys
 import CUDAExtension
 
 def test_cuda_kernel():

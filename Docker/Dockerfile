@@ -19,9 +19,6 @@ RUN apt-get update && \
       gdb \
       cuda-gdb-12-8 \
       cuda-nvtx-12-8 \
-      libcudnn8-dev \
-      cuda-cusparselt-dev \
-      cuda-cudss-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # 2) Create a venv at /opt/venv and upgrade pip inside it
